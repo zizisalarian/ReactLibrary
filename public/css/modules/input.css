@@ -1,0 +1,35 @@
+.input-field {
+  :where(& > :not(:last-child)) {
+    --tw-space-y-reverse: 0 !important;
+    margin-block-start: calc(
+      calc(var(--spacing) * 3) * var(--tw-space-y-reverse)
+    ) !important;
+    margin-block-end: calc(
+      calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse))
+    ) !important;
+  }
+}
+.input-label {
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
+  color: var(--color-zinc-500);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.input-element {
+  margin-top: calc(var(--spacing) * 1) !important;
+  height: calc(var(--spacing) * 10);
+  width: 100%;
+  border-radius: var(--radius-md);
+  border-width: 1px;
+  border-color: oklch(92% 0.004 286.32);
+  padding-inline: calc(var(--spacing) * 4);
+  &::placeholder {
+    font-size: var(--text-sm) !important;
+    line-height: var(--tw-leading, var(--text-sm--line-height)) !important;
+  }
+  &:focus-within {
+    --tw-outline-style: none !important;
+    outline-style: none !important;
+  }
+}

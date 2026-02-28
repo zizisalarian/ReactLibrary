@@ -1,37 +1,93 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { PiAirplane } from "react-icons/pi";
+import { useId, useState } from "react";
+import toast from "react-hot-toast";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
+  const id = useId();
+  const loginHandler = () => {
+    console.log(username, password);
+    toast.loading("در حال دریافت اطلاعات", {
+      duration: 2000,
+    });
+    setTimeout(() => {
+      if (username.length < 8) {
+        toast.error("نام کاربری باید حداقل 8 کاراکتر باشه");
+      }
+      if (password.length < 8) {
+        toast.error("گذر واژه باید حداقل 8 کاراکتر باشه");
+      }
+
+      toast.success("ورود با موفقیت انجام شد");
+    }, 2000);
+  };
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a href="#">
-          <PiAirplane style={{ width: "100px", height: "100px" }} />
-        </a>
+        <div id="form">
+          <header id="form-header">
+            <h1 id="form-title">خوش آمدید</h1>
+            <p id="form-caption">
+              به پنل کاربری خود خوش آمدید, لطفا جهت ادامه اطلاعات خود را تکمیل
+              نمائید.
+            </p>
+          </header>
+          <main id="form-main">
+            <div className="input-field">
+              <label htmlFor={id + "username"} className="input-label">
+                نام کاربری:
+              </label>
+              <input
+                value={username}
+                onChange={() => setUsername(event.target.value)}
+                type="text"
+                className="input-element"
+                id={id + "username"}
+                placeholder="لطفا نام کاربری یا شماره موبایل خود را وارد نمائید ..."
+              />
+            </div>
+            <div className="input-field">
+              <label htmlFor={id + "password"} className="input-label">
+                {" "}
+                گذرواژه:{" "}
+              </label>
+              <input
+                value={password}
+                onChange={() => setPassword(event.target.value)}
+                type="text"
+                className="input-element"
+                id={id + "password"}
+                placeholder="********"
+              />
+              <div className="forgot-password-field">
+                <span className="link-text"> گذرواژه ام را فراموش کردم </span>
+              </div>
+            </div>
+          </main>
+          <footer className="grow space-y-3 w-full!">
+            <div className="flex items-center gap-1">
+              <input type="checkbox" id={id + "remember-me"} />
+              <label htmlFor={id + "remember-me"} className="remember-me-label">
+                لطفا مرا به خاطر بسپار.
+              </label>
+            </div>
+            <button id="submit-button" onClick={() => loginHandler(username)}>
+              ادامه و ورود
+            </button>
+
+            <div className="hasnt-account-field">
+              <div className="hasnt-account">
+                <p className="field-label">حساب کاربری ندارید؟</p>
+                <span className="link-text"> ثبت نام کنید </span>
+              </div>
+            </div>
+          </footer>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div id="introduction">
+        <img src="/images/image.png" className="" alt="" />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }

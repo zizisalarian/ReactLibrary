@@ -1,0 +1,19 @@
+#submit-button {
+    height: calc(var(--spacing) * 11);
+    width: 100%;
+    cursor: pointer !important;
+    border-radius: var(--radius-md);
+    background-color: var(--color-black);
+    padding-bottom: calc(var(--spacing) * 1);
+    color: var(--color-white);
+    --tw-duration: 150ms;
+    transition-duration: 150ms;
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, #000 90%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-black) 90%, transparent);
+        }
+      }
+    }
+  }

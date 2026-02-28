@@ -1,0 +1,12 @@
+input[type="checkbox"] {
+    &:checked {
+      accent-color: var(--color-black) !important;
+    }
+  }
+  .remember-me-label {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+    color: var(--color-zinc-700);
+    -webkit-user-select: none;
+    user-select: none;
+  }

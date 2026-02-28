@@ -1,0 +1,43 @@
+#form-header {
+    width: 100% !important;
+    flex-grow: 1;
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+    }
+    h1 {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+      --tw-font-weight: var(--font-weight-black);
+      font-weight: var(--font-weight-black);
+    }
+    p {
+      color: var(--color-zinc-500);
+    }
+  }
+  #form-main {
+    width: 100% !important;
+    flex-grow: 1;
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+    }
+    :is(& > *) {
+      flex-grow: 1 !important;
+    }
+  }
+  #form {
+    margin-inline: auto !important;
+    display: flex;
+    height: 100%;
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: calc(var(--spacing) * 10);
+    :is(& > *) {
+      max-height: max-content;
+    }
+  }
